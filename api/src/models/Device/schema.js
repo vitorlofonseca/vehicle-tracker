@@ -2,21 +2,25 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-  manufacturer: {
+  macAddress: {
     type: String,
     required: [true]
   },
-  model: {
+  password: {
     type: String,
     required: [true]
   },
-  year: {
-    type: Number,
+  inUse: {
+    type: Boolean,
     required: [true]
   },
-  plate: {
-    type: String,
-    required: [true]
+  vehicle: {
+    type: Object,
+    required: [false]
+  },
+  metrics: {
+    type: Array,
+    required: [false]
   }
 });
 

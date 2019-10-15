@@ -11,6 +11,6 @@ mongoManager.connect(env);
 app.use(bodyParser.json());
 app.use("/api/v1", api());
 
-app.listen(3000, function() {
-  console.log("App listening on port 3000!");
+app.listen(env.api.port, function() {
+  console.log("Listening");
 });

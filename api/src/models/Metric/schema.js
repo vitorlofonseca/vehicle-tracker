@@ -2,19 +2,19 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-  manufacturer: {
+  name: {
     type: String,
     required: [true]
   },
-  model: {
+  code: {
     type: String,
     required: [true]
   },
-  year: {
-    type: Number,
+  unit: {
+    type: String,
     required: [true]
   },
-  plate: {
+  value: {
     type: String,
     required: [true]
   }
