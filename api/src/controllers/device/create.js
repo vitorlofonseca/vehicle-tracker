@@ -2,13 +2,13 @@ const bcrypt = require("bcryptjs");
 
 function validateNewDevice(device) {
   if (!device.password) {
-    throw new Error("A password field must be defined");
+    res.status(400).send("A password field must be defined");
   }
   if (!device.macAddress) {
-    throw new Error("A macAddress field must be defined");
+    res.status(400).send("A macAddress field must be defined");
   }
   if (device.inUse !== false && device.inUse !== true) {
-    throw new Error("A flag 'inUse' must be defined");
+    res.status(400).send("A flag 'inUse' must be defined");
   }
 }
 

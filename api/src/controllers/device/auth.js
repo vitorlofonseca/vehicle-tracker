@@ -33,10 +33,10 @@ function foundDeviceWithoutPassword(device) {
 const auth = ({ Device }) => async (req, res, next) => {
   try {
     if (!macAddressIsSetted(req)) {
-      res.status(401).send("A 'macAddress' field must be setted");
+      res.status(400).send("A 'macAddress' field must be setted");
     }
     if (!passwordIsSetted(req)) {
-      res.status(401).send("A 'password' field must be setted");
+      res.status(400).send("A 'password' field must be setted");
     }
 
     const devices = await Device.find({ macAddress: req.body.macAddress });
