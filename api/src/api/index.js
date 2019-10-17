@@ -1,12 +1,15 @@
 const express = require("express");
 
 const { Device } = require("../models/Device/model");
-const models = { Device };
+const { Metric } = require("../models/Metric/model");
+const models = { Device, Metric };
 
 const createDevice = require("../controllers/device/create");
 const authInDevice = require("../controllers/device/auth");
 const setVehicle = require("../controllers/device/setVehicle");
-const getDevice = require("../controllers/device/getDevice");
+const getDevice = require("../controllers/device/get");
+
+const pushMetric = require("../controllers/metric/push");
 
 const routersInit = () => {
   const router = express();
@@ -14,6 +17,8 @@ const routersInit = () => {
   router.post("/device/auth", authInDevice(models));
   router.post("/device/setVehicle", setVehicle(models));
   router.get("/device/:macAddress", getDevice(models));
+
+  router.post("/metric", pushMetric(models));
   return router;
 };
 

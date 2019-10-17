@@ -118,6 +118,65 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get Device",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/device/psakopsa-opksakopsa-kosap-askopk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"psakopsa-opksakopsa-kosap-askopk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save metric",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"deviceMacAddress\": \"psakopsa-opksakopsa-kosap-askopk\",\n\t\"metric\": {\n\t\t\"code\": \"RPM\",\n\t\t\"name\": \"rpm\",\n\t\t\"value\": \"180\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/metric",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"metric"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}

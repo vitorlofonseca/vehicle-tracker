@@ -1,4 +1,4 @@
-const getDevice = ({ Device }) => async (req, res, nex) => {
+const get = ({ Device }) => async (req, res, nex) => {
   let macAddress = req.params.macAddress;
 
   if (!macAddress) {
@@ -14,4 +14,4 @@ const getDevice = ({ Device }) => async (req, res, nex) => {
   res.status(200).send(foundDevice);
 };
 
-module.exports = getDevice;
+module.exports = get;
