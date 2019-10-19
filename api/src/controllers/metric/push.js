@@ -47,30 +47,42 @@ const push = ({ Metric, Device }) => async (req, res, next) => {
     res.status(400).send("A 'deviceMacAddress' field must be passed");
   }
 
-  let metric = req.body.metric;
-
-  if (whyMetricIsInvalid(metric)) {
-    res.status(400).send(whyMetricIsInvalid(metric));
-  }
-
   let device = await Device.findOne({ macAddress: deviceMacAddress });
 
   if (!device) {
     res.status(404).send("Device not found");
   }
 
-  metric.insertedAt = new Date();
+  let metrics = req.body.metrics;
 
-  await Device.updateOne(
-    { macAddress: deviceMacAddress },
-    { $push: { "metrics.history": metric } }
-  );
+  if (!metrics) {
+    res
+      .status(400)
+      .send("A 'metrics' field must be passed, containing the metrics");
+  }
 
-  let lastMetrics = getLastMetrics(device.metrics.last, metric);
+  if (!Array.isArray(metrics)) {
+    res.status(400).send("The 'metrics' field must be an array");
+  }
+
+  let lastMetrics = device.metrics.last;
+
+  await metrics.forEach(async metric => {
+    if (whyMetricIsInvalid(metric)) {
+      res.status(400).send(whyMetricIsInvalid(metric));
+    }
+    metric.insertedAt = new Date();
+    lastMetrics = getLastMetrics(lastMetrics, metric);
+  });
 
   await Device.updateOne(
     { macAddress: deviceMacAddress },
     { $set: { "metrics.last": lastMetrics } }
+  );
+
+  await Device.updateOne(
+    { macAddress: deviceMacAddress },
+    { $push: { "metrics.history": { $each: metrics } } }
   );
 
   res.status(200).send("inserted");

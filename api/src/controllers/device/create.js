@@ -19,6 +19,7 @@ function encryptPassword(password) {
 
 const create = ({ Device }) => (req, res, next) => {
   var device = new Device(req.body);
+  device.metrics = { last: [], history: [] };
   try {
     device.password = encryptPassword(req.body.password);
     validateNewDevice(device);

@@ -20,7 +20,13 @@ const schema = new Schema({
   },
   metrics: {
     type: Object,
-    required: [false]
+    required: [false],
+    last: {
+      type: Array
+    },
+    history: {
+      type: Array
+    }
   }
 });
 
