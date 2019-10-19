@@ -27,12 +27,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/device/create",
+					"raw": "http://localhost:3001/api/v1/device/create",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "3001",
 					"path": [
 						"api",
 						"v1",
@@ -65,12 +65,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/device/auth",
+					"raw": "http://localhost:3001/api/v1/device/auth",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "3001",
 					"path": [
 						"api",
 						"v1",
@@ -103,12 +103,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/device/setVehicle",
+					"raw": "http://localhost:3001/api/v1/device/setVehicle",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "3001",
 					"path": [
 						"api",
 						"v1",
@@ -125,12 +125,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/device/psakopsa-opksakopsa-kosap-askopk",
+					"raw": "http://localhost:3001/api/v1/device/psakopsa-opksakopsa-kosap-askopk",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "3001",
 					"path": [
 						"api",
 						"v1",
@@ -155,7 +155,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"deviceMacAddress\": \"psakopsa-opksakopsa-kosap-askopk\",\n\t\"metric\": {\n\t\t\"code\": \"RPM\",\n\t\t\"name\": \"rpm\",\n\t\t\"value\": \"180\"\n\t}\n}",
+					"raw": "{\n\t\"deviceMacAddress\": \"psakopsa-opksakopsa-kosap-askopk\",\n\t\"metrics\": [{\n\t\t\"code\": \"TEST\",\n\t\t\"name\": \"Test3\",\n\t\t\"value\": \"99999999999\"\n\t},{\n\t\t\"code\": \"TEST3\",\n\t\t\"name\": \"Test4\",\n\t\t\"value\": \"321\"\n\t}]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -163,16 +163,39 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/metric",
+					"raw": "http://localhost:3001/api/v1/metric",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "3001",
 					"path": [
 						"api",
 						"v1",
 						"metric"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Last Metrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/v1/metric/getLast/psakopsa-opksakopsa-kosap-askopk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"metric",
+						"getLast",
+						"psakopsa-opksakopsa-kosap-askopk"
 					]
 				}
 			},

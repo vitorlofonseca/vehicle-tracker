@@ -3,5 +3,5 @@ module.exports = {
     host: "host",
     name: "databaseName"
   },
-  api: { port: 3000 }
+  api: { port: 3001 }
 };
