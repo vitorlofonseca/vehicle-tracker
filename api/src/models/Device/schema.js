@@ -19,7 +19,7 @@ const schema = new Schema({
     required: [false]
   },
   metrics: {
-    type: Array,
+    type: Object,
     required: [false]
   }
 });

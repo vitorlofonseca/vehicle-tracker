@@ -18,6 +18,28 @@ function whyMetricIsInvalid(metric) {
   return error;
 }
 
+function getLastMetrics(oldLastMetrics, metricToUpdate) {
+  if (!oldLastMetrics) {
+    return [metricToUpdate];
+  }
+
+  let itsANewMetric = true;
+
+  let newLastMetrics = oldLastMetrics.map(oldLastMetric => {
+    if (oldLastMetric.code == metricToUpdate.code) {
+      itsANewMetric = false;
+      return metricToUpdate;
+    }
+    return oldLastMetric;
+  });
+
+  if (itsANewMetric) {
+    newLastMetrics.push(metricToUpdate);
+  }
+
+  return newLastMetrics;
+}
+
 const push = ({ Metric, Device }) => async (req, res, next) => {
   let deviceMacAddress = req.body.deviceMacAddress;
 
@@ -39,9 +61,16 @@ const push = ({ Metric, Device }) => async (req, res, next) => {
 
   metric.insertedAt = new Date();
 
-  await Device.update(
+  await Device.updateOne(
     { macAddress: deviceMacAddress },
-    { $push: { metrics: metric } }
+    { $push: { "metrics.history": metric } }
+  );
+
+  let lastMetrics = getLastMetrics(device.metrics.last, metric);
+
+  await Device.updateOne(
+    { macAddress: deviceMacAddress },
+    { $set: { "metrics.last": lastMetrics } }
   );
 
   res.status(200).send("inserted");
