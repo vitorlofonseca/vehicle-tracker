@@ -10,6 +10,7 @@ const setVehicle = require("../controllers/device/setVehicle");
 const getDevice = require("../controllers/device/get");
 
 const pushMetric = require("../controllers/metric/push");
+const getLastMetrics = require("../controllers/metric/getLast");
 
 const routersInit = () => {
   const router = express();
@@ -19,6 +20,7 @@ const routersInit = () => {
   router.get("/device/:macAddress", getDevice(models));
 
   router.post("/metric", pushMetric(models));
+  router.get("/metric/getLast/:macAddress", getLastMetrics(models));
   return router;
 };
 
