@@ -14,6 +14,9 @@ function whyMetricIsInvalid(metric) {
   if (!metric.value) {
     return "The 'metric' object must have 'value' parameter";
   }
+  if (!metric.unit) {
+    return "The 'metric' object must have 'unit' parameter";
+  }
 
   return error;
 }
