@@ -155,7 +155,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"deviceMacAddress\": \"psakopsa-opksakopsa-kosap-askopk\",\n\t\"metrics\": [{\n\t\t\"code\": \"TEST\",\n\t\t\"name\": \"Test3\",\n\t\t\"value\": \"99999999999\"\n\t},{\n\t\t\"code\": \"TEST3\",\n\t\t\"name\": \"Test4\",\n\t\t\"value\": \"321\"\n\t}]\n}",
+					"raw": "{\n\t\"deviceMacAddress\": \"psakopsa-opksakopsa-kosap-askopk\",\n\t\"metrics\": [{\n\t\t\"code\": \"RPM\",\n\t\t\"name\": \"RPM\",\n\t\t\"value\": \"80\",\n\t\t\"unit\": \"RPM\"\n\t},{\n\t\t\"code\": \"SPEED\",\n\t\t\"name\": \"Speed\",\n\t\t\"value\": \"120\",\n\t\t\"unit\": \"Km/h\"\n\t}]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
