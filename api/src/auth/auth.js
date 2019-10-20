@@ -26,11 +26,13 @@ function getDateByToken(token) {
 }
 
 function tokenTimeIsCurrent(generationDateToken) {
-  let minimumDate = new Date().getTime() - TOKEN_SHELF_LIFE_MILISECONDS;
-  let maximumDate = new Date().getTime();
-  let tokenDate = new Date(generationDateToken).getTime();
+  let minimumDate = Date.now() - TOKEN_SHELF_LIFE_MILISECONDS;
+  let maximumDate = Date.now();
 
-  if (tokenDate <= maximumDate && tokenDate >= minimumDate) {
+  if (
+    generationDateToken <= maximumDate &&
+    generationDateToken >= minimumDate
+  ) {
     return true;
   }
   return false;
