@@ -1,24 +1,24 @@
-.indicators-panel {
+.metrics-panel {
 }
 
-.indicator-title {
+.metric-title {
   font-size: 2em;
 }
 
-.indicator-value {
+.metric-value {
   font-size: 1.5em;
   padding-top: 1%;
 }
 
-.indicators-panel_title {
+.metrics-panel_title {
   font-size: 2.5em;
   padding: 2% 0 0 2%;
 }
 
-.indicators-panel_content {
+.metrics-panel_content {
   padding: 0 0 0 2%;
 }
 
-.indicators-panel_line {
+.metrics-panel_line {
   padding-bottom: 5%;
 }
