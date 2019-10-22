@@ -10,9 +10,18 @@ const getHeaders = () => {
   };
 };
 
+const getDeviceMac = () => {
+  return localStorage.getItem("deviceMac");
+};
+
+const getBody = () => {
+  return { macAddress: getDeviceMac() };
+};
+
 export const Auth = () => {
   let headers = getHeaders();
-  return axios.post(env.api.url + "device/auth", headers).then(res => {
+  let body = getBody();
+  return axios.post(env.api.url + "device/auth", body, headers).then(res => {
     return res;
   });
 };
