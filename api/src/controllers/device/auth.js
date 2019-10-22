@@ -1,5 +1,3 @@
-const bcrypt = require("bcryptjs");
-
 function macAddressIsSetted(req) {
   if (!req.body.macAddress) {
     return false;
@@ -22,7 +20,7 @@ function macAddressHasBeenFound(foundDevice) {
 }
 
 function passwordMatched(device, password) {
-  return bcrypt.compareSync(password, device.password);
+  return password == device.password;
 }
 
 function foundDeviceWithoutPassword(device) {

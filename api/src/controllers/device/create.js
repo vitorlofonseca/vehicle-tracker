@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs");
+var sha256 = require("js-sha256").sha256;
 
 function validateNewDevice(device) {
   if (!device.password) {
@@ -13,8 +13,7 @@ function validateNewDevice(device) {
 }
 
 function encryptPassword(password) {
-  var salt = 10;
-  return bcrypt.hashSync(password, salt);
+  return sha256(password);
 }
 
 const create = ({ Device }) => (req, res, next) => {

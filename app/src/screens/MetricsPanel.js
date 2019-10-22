@@ -1,5 +1,4 @@
 import React from "react";
-import Metric from "../models/metric";
 import { Container, Row, Col, Jumbotron } from "react-bootstrap";
 import "./styles/MetricsPanel.css";
 import { GetMetricsByMac } from "../http/metric";
