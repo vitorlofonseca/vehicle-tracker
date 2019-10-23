@@ -1,7 +1,8 @@
 import React from "react";
-import { Container, Row, Col, Jumbotron } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import "./styles/MetricsPanel.css";
 import { GetMetricsByMac } from "../http/metric";
+import { Route, withRouter } from "react-router-dom";
 
 class MetricsPanel extends React.Component {
   constructor(props) {
@@ -13,9 +14,15 @@ class MetricsPanel extends React.Component {
   }
 
   componentWillMount() {
-    GetMetricsByMac().then(metrics => {
-      this.setState({ metrics: metrics.data });
-    });
+    GetMetricsByMac()
+      .then(metrics => {
+        this.setState({ metrics: metrics.data });
+      })
+      .catch(err => {
+        if (err.response.status == 401) {
+          this.props.history.push("/");
+        }
+      });
   }
 
   getMetricsHtml() {
@@ -53,4 +60,4 @@ class MetricsPanel extends React.Component {
   }
 }
 
-export default MetricsPanel;
+export default withRouter(MetricsPanel);

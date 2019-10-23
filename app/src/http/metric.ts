@@ -2,10 +2,12 @@ import axios from "axios";
 import { getToken } from "../auth/auth";
 import { env } from "../config/env";
 
-let headers = {
-  headers: {
-    token: getToken()
-  }
+const getHeaders = () => {
+  return {
+    headers: {
+      token: getToken()
+    }
+  };
 };
 
 const getDeviceMac = () => {
@@ -13,6 +15,7 @@ const getDeviceMac = () => {
 };
 
 export const GetMetricsByMac = () => {
+  let headers = getHeaders();
   return axios
     .get(env.api.url + "metric/getLast/" + getDeviceMac(), headers)
     .then(res => {
