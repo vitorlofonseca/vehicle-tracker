@@ -19,6 +19,7 @@ body {
   min-height: 100vh;
   background-color: grey;
   padding-top: 10%;
+  text-align: center;
 }
 
 .logo_left_bar {

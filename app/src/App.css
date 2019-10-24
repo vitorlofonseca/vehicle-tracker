@@ -6,6 +6,13 @@
   height: 40vmin;
 }
 
+.Logout {
+  bottom: 0%;
+  position: absolute;
+  color: white;
+  padding-bottom: 5%;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

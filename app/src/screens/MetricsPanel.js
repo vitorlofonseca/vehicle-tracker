@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./styles/MetricsPanel.css";
 import { GetMetricsByMac } from "../http/metric";
-import { Route, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class MetricsPanel extends React.Component {
   constructor(props) {
