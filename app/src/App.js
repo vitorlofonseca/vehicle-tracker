@@ -28,7 +28,14 @@ class App extends React.Component {
             <div className="application-logo">Car Tracker</div>
             <br></br>
             <div className="Logout">
-              <button onClick={this.logout}>Login with another device</button>
+              <a
+                className="App-link"
+                onClick={this.logout}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Login with another device
+              </a>
             </div>
           </Col>
           <Col md={9}>
