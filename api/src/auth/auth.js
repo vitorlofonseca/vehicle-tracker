@@ -38,7 +38,42 @@ function tokenTimeIsCurrent(generationDateToken) {
   return false;
 }
 
+function authForDeviceCreation(req, env) {
+  let cipherToken = req.headers.token;
+  let api_key = env.api.key;
+
+  let tokenBytes = CryptoJS.AES.decrypt(cipherToken, api_key);
+  let plainToken = tokenBytes.toString(CryptoJS.enc.Utf8);
+
+  let macAddress = plainToken.split("|")[0];
+  let generationDateToken = plainToken.split("|")[1];
+
+  if (macAddress != req.body.macAddress) {
+    return {
+      success: false,
+      reason: "Access denied"
+    };
+  }
+
+  if (!tokenTimeIsCurrent(generationDateToken)) {
+    return {
+      success: false,
+      reason:
+        "A token is valid through " +
+        TOKEN_SHELF_LIFE_MILISECONDS / 1000 +
+        " seconds. You must create another token"
+    };
+  }
+
+  return { success: true };
+}
+
 const auth = async (req, env, { Device }) => {
+  let urlRequest = req.originalUrl;
+  if (urlRequest.endsWith("/device")) {
+    return authForDeviceCreation(req, env);
+  }
+
   let turnoff_auth = env.api.turnoff_auth;
   let api_key = env.api.key;
 
