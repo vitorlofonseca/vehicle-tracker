@@ -27,7 +27,7 @@ const create = ({ Device }) => async (req, res, next) => {
     if (foundDevice) {
       await Device.updateOne(
         { macAddress: device.macAddress },
-        { vehicle: device.vehicle }
+        { vehicle: device.vehicle, password: device.password }
       );
       res.status(200).send("ok");
       return;
