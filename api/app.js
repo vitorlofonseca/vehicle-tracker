@@ -27,5 +27,5 @@ app.use(async function(req, res, next) {
 app.use("/api/v1", api());
 
 app.listen(env.api.port, function() {
-  console.log("Listening");
+  console.log("Listening on port " + env.api.port);
 });
