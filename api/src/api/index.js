@@ -14,7 +14,7 @@ const getLastMetrics = require("../controllers/metric/getLast");
 
 const routersInit = () => {
   const router = express();
-  router.post("/device/create", createDevice(models));
+  router.post("/device", createDevice(models));
   router.post("/device/auth", authInDevice(models));
   router.post("/device/setVehicle", setVehicle(models));
   router.get("/device/:macAddress", getDevice(models));
