@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 
 const getConnectionString = env => {
-  return "mongodb://" + env.database.host + "/" + env.database.name;
+  return (
+    "mongodb://" +
+    env.dashboard.database.host +
+    "/" +
+    env.dashboard.database.name
+  );
 };
 
 module.exports.connect = env => {

@@ -12,7 +12,7 @@ function validateNewDevice(device) {
   return false;
 }
 
-const create = ({ Device }) => (req, res, next) => {
+const create = ({ Device }) => async (req, res, next) => {
   var device = new Device(req.body);
   device.metrics = { last: [], history: [] };
   try {
@@ -20,6 +20,17 @@ const create = ({ Device }) => (req, res, next) => {
 
     if (someDeviceError) {
       res.status(400).send(someDeviceError);
+    }
+
+    let foundDevice = await Device.findOne({ macAddress: device.macAddress });
+
+    if (foundDevice) {
+      await Device.updateOne(
+        { macAddress: device.macAddress },
+        { vehicle: device.vehicle }
+      );
+      res.status(200).send("ok");
+      return;
     }
 
     device.save();

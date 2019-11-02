@@ -21,7 +21,9 @@ const getBody = () => {
 export const Auth = () => {
   let headers = getHeaders();
   let body = getBody();
-  return axios.post(env.api.url + "device/auth", body, headers).then(res => {
-    return res;
-  });
+  return axios
+    .post(env.dashboard.api.url + "device/auth", body, headers)
+    .then(res => {
+      return res;
+    });
 };

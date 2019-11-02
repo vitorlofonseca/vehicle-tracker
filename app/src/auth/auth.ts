@@ -14,5 +14,5 @@ export const getToken = () => {
   let password = getPass();
   let date = Date.now();
   let clearToken = deviceMac + "|" + password + "|" + date;
-  return CryptoJS.AES.encrypt(clearToken, env.api.key).toString();
+  return CryptoJS.AES.encrypt(clearToken, env.dashboard.api.key).toString();
 };

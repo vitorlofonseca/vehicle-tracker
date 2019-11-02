@@ -38,9 +38,9 @@ function tokenTimeIsCurrent(generationDateToken) {
   return false;
 }
 
-function authForDeviceCreation(req, env) {
+function authForDevice(req, env) {
   let cipherToken = req.headers.token;
-  let api_key = env.api.key;
+  let api_key = env.dashboard.api.key;
 
   let tokenBytes = CryptoJS.AES.decrypt(cipherToken, api_key);
   let plainToken = tokenBytes.toString(CryptoJS.enc.Utf8);
@@ -71,11 +71,11 @@ function authForDeviceCreation(req, env) {
 const auth = async (req, env, { Device }) => {
   let urlRequest = req.originalUrl;
   if (urlRequest.endsWith("/device")) {
-    return authForDeviceCreation(req, env);
+    return authForDevice(req, env);
   }
 
-  let turnoff_auth = env.api.turnoff_auth;
-  let api_key = env.api.key;
+  let turnoff_auth = env.dashboard.api.turnoff_auth;
+  let api_key = env.dashboard.api.key;
 
   if (turnoff_auth) {
     return { success: true };

@@ -17,7 +17,7 @@ const getDeviceMac = () => {
 export const GetMetricsByMac = () => {
   let headers = getHeaders();
   return axios
-    .get(env.api.url + "metric/getLast/" + getDeviceMac(), headers)
+    .get(env.dashboard.api.url + "metric/getLast/" + getDeviceMac(), headers)
     .then(res => {
       return res;
     });

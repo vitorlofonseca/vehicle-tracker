@@ -26,6 +26,6 @@ app.use(async function(req, res, next) {
 });
 app.use("/api/v1", api());
 
-app.listen(env.api.port, function() {
-  console.log("Listening on port " + env.api.port);
+app.listen(env.dashboard.api.port, function() {
+  console.log("Listening on port " + env.dashboard.api.port);
 });
