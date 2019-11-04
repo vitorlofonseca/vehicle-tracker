@@ -13,7 +13,14 @@ class MetricsPanel extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    this.interval = setInterval(() => this.loadMetrics(), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  loadMetrics = () => {
     GetMetricsByMac()
       .then(metrics => {
         this.setState({ metrics: metrics.data });
@@ -23,10 +30,22 @@ class MetricsPanel extends React.Component {
           this.props.history.push("/");
         }
       });
+  };
+
+  componentWillMount() {
+    this.loadMetrics();
   }
 
   getMetricsHtml() {
     let htmlMetrics = [];
+
+    if (this.state.metrics.length == 0) {
+      return (
+        <Col>
+          <h4>The device has no metrics</h4>
+        </Col>
+      );
+    }
 
     this.state.metrics.forEach(metric => {
       htmlMetrics.push(
