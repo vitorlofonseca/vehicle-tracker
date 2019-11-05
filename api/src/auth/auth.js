@@ -68,9 +68,18 @@ function authForDevice(req, env) {
   return { success: true };
 }
 
-const auth = async (req, env, { Device }) => {
+requestComesFromDevice = req => {
   let urlRequest = req.originalUrl;
-  if (urlRequest.endsWith("/device")) {
+  let method = req.method;
+
+  return (
+    method == "POST" &&
+    (urlRequest.endsWith("/device") || urlRequest.endsWith("/metric"))
+  );
+};
+
+const auth = async (req, env, { Device }) => {
+  if (requestComesFromDevice(req)) {
     return authForDevice(req, env);
   }
 

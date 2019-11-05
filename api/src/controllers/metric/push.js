@@ -44,10 +44,10 @@ function getLastMetrics(oldLastMetrics, metricToUpdate) {
 }
 
 const push = ({ Metric, Device }) => async (req, res, next) => {
-  let deviceMacAddress = req.body.deviceMacAddress;
+  let deviceMacAddress = req.body.macAddress;
 
   if (!deviceMacAddress) {
-    res.status(400).send("A 'deviceMacAddress' field must be passed");
+    res.status(400).send("A 'macAddress' field must be passed");
   }
 
   let device = await Device.findOne({ macAddress: deviceMacAddress });

@@ -27,7 +27,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3001/api/v1/device/create",
+					"raw": "http://localhost:3001/api/v1/device",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -36,8 +36,7 @@
 					"path": [
 						"api",
 						"v1",
-						"device",
-						"create"
+						"device"
 					]
 				}
 			},
@@ -123,9 +122,15 @@
 			"name": "Get Device",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "U2FsdGVkX19lKnjysx6NumnNRm3Q/dOJcpWKwkoChJqNconJJxyQjFzD4evpOMyi8xh1uQGUQOsBCQy19OZDJ2AgAxrTs5umysgRE71O9tlklbUzQEgxmYFEa4Y/+J6wmbwY7jxHHLhcupBYIvIqRnIrxTVBSZbKj7/KXTFwbS8=",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:3001/api/v1/device/psakopsa-opksakopsa-kosap-askopk",
+					"raw": "http://localhost:3001/api/v1/device/60:45:cb:b8:4c:7a",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -135,7 +140,7 @@
 						"api",
 						"v1",
 						"device",
-						"psakopsa-opksakopsa-kosap-askopk"
+						"60:45:cb:b8:4c:7a"
 					]
 				}
 			},
@@ -155,7 +160,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"deviceMacAddress\": \"psakopsa-opksakopsa-kosap-askopk\",\n\t\"metrics\": [{\n\t\t\"code\": \"RPM\",\n\t\t\"name\": \"RPM\",\n\t\t\"value\": \"80\",\n\t\t\"unit\": \"RPM\"\n\t},{\n\t\t\"code\": \"SPEED\",\n\t\t\"name\": \"Speed\",\n\t\t\"value\": \"120\",\n\t\t\"unit\": \"Km/h\"\n\t}]\n}",
+					"raw": "{\n\t\"macAddress\": \"60:45:cb:b8:4c:7a\",\n\t\"metrics\": [{\n\t\t\"code\": \"RPM\",\n\t\t\"name\": \"RPM\",\n\t\t\"value\": \"800\",\n\t\t\"unit\": \"RPM\"\n\t},{\n\t\t\"code\": \"SPEED\",\n\t\t\"name\": \"Speed\",\n\t\t\"value\": \"700\",\n\t\t\"unit\": \"Km/h\"\n\t},{\n\t\t\"code\": \"TEST\",\n\t\t\"name\": \"Test\",\n\t\t\"value\": \"80\",\n\t\t\"unit\": \"Units\"\n\t}]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -182,7 +187,13 @@
 			"name": "Get Last Metrics",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "U2FsdGVkX1/Bp4r4sY9oFuocpAOA3i0/klG9cxjepIvoby0GlYhNMoFD4yxQKSgAjybTX79utoxBOeHHvmQbLIEJqUY+ue+RLgKu7ttP3HVInxtkh8KJKQwQG+1F+lVFaLtpK8CG/weUR8yz0OXE2SdS04BIksxxeJaTVIse+akwxFU5YKYp05iFyxGmKBD/",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:3001/api/v1/metric/getLast/psakopsa-opksakopsa-kosap-askopk",
 					"protocol": "http",
