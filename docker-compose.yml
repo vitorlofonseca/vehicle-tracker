@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 services:
   vehicle-tracker-app:
     container_name: vehicle-tracker-app
@@ -10,6 +10,11 @@ services:
     container_name: vehicle-tracker-api
     restart: always
     build: ./api
+    environment:
+      DASHBOARD_DB_HOST: vehicle-tracker-db
+      DASHBOARD_DB_NAME: vehicleTracker
+      API_PORT: 3001
+      API_KEY: key-of-vehicle-tracker
     ports:
       - "3001:3001"
     links:
