@@ -82,13 +82,7 @@ const auth = async (req, env, { Device }) => {
   if (requestComesFromDevice(req)) {
     return authForDevice(req, env);
   }
-
-  let turnoff_auth = env.dashboard.api.turnoff_auth;
   let api_key = env.dashboard.api.key;
-
-  if (turnoff_auth) {
-    return { success: true };
-  }
 
   let cipherToken = req.headers.token;
 

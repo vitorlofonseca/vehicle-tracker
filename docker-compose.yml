@@ -1,0 +1,23 @@
+version: "2"
+services:
+  vehicle-tracker-app:
+    container_name: vehicle-tracker-app
+    restart: always
+    build: ./app
+    ports:
+      - "3000:3000"
+  vehicle-tracker-api:
+    container_name: vehicle-tracker-api
+    restart: always
+    build: ./api
+    ports:
+      - "3001:3001"
+    links:
+      - vehicle-tracker-db
+  vehicle-tracker-db:
+    container_name: vehicle-tracker-db
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
