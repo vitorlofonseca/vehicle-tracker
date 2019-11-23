@@ -1,0 +1,28 @@
+.Login {
+  padding: 60px 0;
+  color: white;
+}
+
+.login_application-label {
+  font-size: 4vw;
+  text-align: center;
+  padding-bottom: 2%;
+}
+
+.Login form {
+  margin: 0 auto;
+  max-width: 320px;
+}
+
+.errorDiv {
+  padding-top: 5%;
+  text-align: center;
+}
+
+.divImageCar {
+  text-align: center;
+}
+
+.imageCar {
+  width: 40%;
+}
