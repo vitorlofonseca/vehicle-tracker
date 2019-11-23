@@ -22,20 +22,19 @@ class App extends React.Component {
       <Container className="mw-100 mh-100 w-100 h-100 container_app">
         <Row>
           <Col md={2} className="h-100 left_bar">
-            <div className="application-logo">
+            <div>
               <img src={logo} className="logo_left_bar" alt="logo" />
             </div>
-            <div className="application-logo">Car Tracker</div>
+            <div className="application-label">Car Tracker</div>
             <br></br>
             <div className="Logout">
-              <a
-                className="App-link"
+              <button
                 onClick={this.logout}
-                target="_blank"
-                rel="noopener noreferrer"
+                type="button"
+                class="btn btn-danger"
               >
                 Login with another device
-              </a>
+              </button>
             </div>
           </Col>
           <Col md={9}>
