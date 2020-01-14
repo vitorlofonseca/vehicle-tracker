@@ -1,8 +1,8 @@
 # Vehicle Tracker
 
-Do you lend your car to your child and want to know how fast your child is driving?
+Do you lend your car to your child and want to know how fast your child is driving? 
 
-Vehicle tracker is a project to track your vehicle remotely through internet. With a Raspberry Pi, you will can connect your car to internet, tracking your vehicle metrics like RPM, speed, temperature and another custom metrics developed by anyone.
+Vehicle Tracker is a project to track your vehicle remotely through the internet. With a Raspberry Pi, you will connect your car to the internet, tracking your vehicle metrics like RPM, speed, temperature and other custom metrics developed by anyone.
 
 This repository contains the system that receives the metrics from the vehicles, store and show them to the final user.
 
